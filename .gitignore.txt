@@ -1,0 +1,5 @@
+# Ignorer les logs et fichiers temporaires
+*.log
+*.swp
+*.tmp
+.vagrant/
