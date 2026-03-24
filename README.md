@@ -472,8 +472,8 @@ ls /var/log/validation-*.log | tail -1
 
 | [FAIL] fréquent | Cause probable | Correctif |
 | --------------- | -------------- | --------- |
-| SELinux runtime ≠ Enforcing | SELinux était Disabled → reboot manqué | rebooter |
-| Règles auditd non immuables | Reboot non effectué | rebooter |
+| SELinux runtime ≠ Enforcing | SELinux était Disabled → reboot manqué | Rebooter |
+| Règles auditd non immuables | Reboot non effectué | Rebooter |
 | PasswordAuthentication = yes | Aucune clé SSH au moment du hardening | Déposer clé, relancer script |
 | Base AIDE non initialisée | aide --init échoué | `aide --init && mv /var/lib/aide/aide.db.new.gz /var/lib/aide/aide.db.gz` |
 | chronyd stratum 16 | Pas de NTP accessible | Vérifier `/etc/chrony.conf` et réseau |
