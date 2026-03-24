@@ -589,4 +589,4 @@ couvrir ses traces. C'est le niveau requis par les frameworks CIS/STIG.
 
 *Ce dépôt constitue une preuve de concept opérationnelle — les scripts sont
 testés et reproductibles sur Oracle Linux 10.*  
-*Version scripts : v3.0 "Gold" | Dernière mise à jour : 2026-03-23*
+*Version scripts : v3.0 "Gold" | Dernière mise à jour : 2026-03-24*
