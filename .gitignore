@@ -3,3 +3,5 @@
 *.swp
 *.tmp
 .vagrant/digest.txt
+
+digest.txt
