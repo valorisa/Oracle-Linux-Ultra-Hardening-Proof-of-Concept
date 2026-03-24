@@ -50,7 +50,7 @@ noyau vers des fonctionnalités de sécurité avancées : **seccomp-bpf**,
 ### 1.2 Tableau comparatif initial
 
 | Critère | OpenBSD (2010) | Oracle Linux 10 ultra‑durci |
-|--------|---------------|------------------------------|
+| ------ | ------------- | ---------------------------- |
 | Conception sécurité | Ajoutée après coup (1996) | Intégrée dès le noyau (SELinux depuis 2003) |
 | Modèle d'accès | DAC uniquement | MAC (SELinux) + DAC (ACLs) |
 | Contrôle fin | Chroot limité | SELinux types, MCS, catégories, seccomp |
@@ -88,7 +88,7 @@ installés via les dépôts sont audités, signés et régulièrement mis à jou
 ### 2.2 Comparaison des processus d'audit
 
 | Élément | OpenBSD | Oracle Linux 10 |
-|--------|---------|----------------|
+| ------ | ------- | -------------- |
 | Audit du noyau | Manuel par l'équipe | Automatisé, CI, audits externes |
 | Audit des paquets | Base seulement | Dépôts entiers avec signatures GPG |
 | Correctifs de sécurité | Patchs manuels | Kpatch (live patching) sans redémarrage |
@@ -142,7 +142,7 @@ la nécessité de **contenir les dégâts en cas d'exploitation réussie**. Orac
 ### 3.3 Tableau des services par défaut
 
 | Service | OpenBSD (2010) | Oracle Linux 10 (hardening v3.0) |
-|---------|----------------|----------------------------------|
+| ------- | -------------- | -------------------------------- |
 | MTA | Sendmail | Masqué (sendmail.service masked) |
 | DNS | BIND | Masqué (bind.service masked) |
 | Firewall | PF | nftables via firewalld (zone drop) |
@@ -189,7 +189,7 @@ sesearch -A -s httpd_t -t etc_t -c file -p write
 ### 4.3 Tableau des mécanismes de confinement
 
 | Outil | OpenBSD | Oracle Linux 10 |
-|-------|---------|----------------|
+| ----- | ------- | -------------- |
 | Chroot | Oui, amélioré | Oui (rarement seul) |
 | Jail/Virtualisation | vmm minimal | KVM + sVirt, LXC, Docker, Podman |
 | MAC | Aucun | SELinux (targeted enforcing) |
@@ -235,7 +235,7 @@ ausearch -k identity -ts recent
 ### 5.3 Tableau des capacités EACL
 
 | Capacité | OpenBSD | Oracle Linux 10 |
-|----------|---------|----------------|
+| -------- | ------- | -------------- |
 | MAC complet | Non | SELinux (targeted enforcing) |
 | Contrôle accès fichiers | DAC (rwx) | DAC + ACL étendues + types SELinux |
 | Isolation processus | Chroot | SELinux + seccomp + namespaces |
@@ -268,7 +268,7 @@ permissif résiduel.
 ### 6.2 Comparaison des frameworks EACL
 
 | Framework | Complexité | Maturité | Adoption |
-|-----------|-----------|---------|----------|
+| --------- | --------- | ------- | -------- |
 | SELinux | Élevée | Très mature (>20 ans) | RHEL, Oracle Linux, Fedora |
 | RSBAC | Élevée | Mature, moins répandu | Hardened Gentoo |
 | Systrace | Faible | Obsolète, vulnérable | Abandonné |
@@ -296,7 +296,7 @@ Oracle Linux 10 avec le hardening v3.0 de ce dépôt offre une sécurité
 critères pertinents :
 
 | Domaine | OpenBSD | Oracle Linux 10 (v3.0) |
-|---------|---------|------------------------|
+| ------- | ------- | ---------------------- |
 | Audit code | Excellent, mais équipe réduite | Large, soutenu par Oracle/Red Hat/Google |
 | MAC | Aucun | SELinux targeted enforcing, zéro permissive |
 | Sécurité virtuelle | vmm minimal | sVirt + KVM + SELinux MCS |
@@ -319,7 +319,7 @@ CIS **réel** calculé par OpenSCAP.
 #### Environnement cible
 
 | Élément | Requis |
-|---------|--------|
+| ------- | ------ |
 | OS | Oracle Linux 10 (testé), RHEL 10 compatible |
 | Architecture | x86_64 (règles audit 32 bits conditionnelles) |
 | Accès | root (sudo ou session root directe) |
@@ -471,7 +471,7 @@ ls /var/log/validation-*.log | tail -1
 #### Traitement des [FAIL] courants
 
 | [FAIL] fréquent | Cause probable | Correctif |
-|-----------------|----------------|-----------|
+| --------------- | -------------- | --------- |
 | SELinux runtime ≠ Enforcing | SELinux était Disabled → reboot manqué | rebooter |
 | Règles auditd non immuables | Reboot non effectué | rebooter |
 | PasswordAuthentication = yes | Aucune clé SSH au moment du hardening | Déposer clé, relancer script |
@@ -511,7 +511,7 @@ score CIS simulé.
 #### `oracle-linux-ultra-hardening.sh` — 12 phases
 
 | Phase | Action | Criticité |
-|-------|--------|-----------|
+| ----- | ------ | --------- |
 | 0 | Mise à jour système + installation paquets | Obligatoire |
 | 1 | SELinux enforcing/targeted, suppression domaines permissifs | Critique |
 | 2 | SSH via drop-in `sshd_config.d` + garde-fou anti-lockout | Critique |
@@ -529,7 +529,7 @@ score CIS simulé.
 #### `validate-hardening.sh` — 13 sections
 
 | Section | Vérifie | Méthode |
-|---------|---------|---------|
+| ------- | ------- | ------- |
 | 1 | SELinux runtime + persistant + domaines permissifs | `getenforce`, `sestatus`, `semanage` |
 | 2 | SSH : config effective, drop-in, tous paramètres | `sshd -T` (source de vérité) |
 | 3 | Sysctl : 20 paramètres kernel/réseau | `sysctl -n` par paramètre |
