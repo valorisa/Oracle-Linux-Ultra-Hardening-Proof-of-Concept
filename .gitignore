@@ -2,4 +2,4 @@
 *.log
 *.swp
 *.tmp
-.vagrant/
+.vagrant/digest.txt
